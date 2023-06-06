@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Light Data Entry</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #C2DEDC;
+      color: #007bff;
+    }
+    .nav{
+        margin-left: 500px;
+    }
+
+    .head{
+        font-size: larger;
+        margin-top: 10px;
+        margin-right: 20px;
+    }
+
+    .table {
+      width: 900px;
+      border-collapse: collapse;
+      background-color: #fff;
+    }
+
+    .table th,
+    .table td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .table input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+    .addRowButton {
+        margin-top: 20px;
+        padding: 10px 20px;
+      background-color: #007bff ;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .downloadButton {
+      padding: 10px 20px;
+      background-color: #007bff ;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-header">
+          <p class="head"><a href="/">EDIT EXCEL SHEET</a></p>
+        </div>
+          <ul class="nav">
+            <li id="home"><a href="/phone.html">SMARTPHONE</a></li>
+            <li id="home"><a href="/fan.html">FAN</a></li>
+            <li id="about"><a href="/light.html">LIGHT BULB</a></li>
+            <li id="contact"><a href="/refri.html">REFRIGERATOR</a></li>
+            <li id="contact"><a href="/tv.html">TELEVISION</a></li>
+          </ul>
+      </div>
+  <h1>Light Bulb Data Entry</h1>
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Serial Number</th>
+          <th>Voltage</th>
+          <th>Warranty</th>
+          <th>Quantity</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Add 10 pre-existing rows -->
+        <tr>
+          <td><input type="text" class="inputField" value="12345" /></td>
+          <td><input type="text" class="inputField" value="6.2" /></td>
+          <td><input type="text" class="inputField" value="2" /></td>
+          <td><input type="text" class="inputField" value="5" /></td>
+          <td><input type="text" class="inputField" value="10" /></td>
+        </tr>
+        <tr>
+            <td><input type="text" class="inputField" value="14567" /></td>
+            <td><input type="text" class="inputField" value="5" /></td>
+            <td><input type="text" class="inputField" value="1" /></td>
+            <td><input type="text" class="inputField" value="10" /></td>
+            <td><input type="text" class="inputField" value="9" /></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="inputField" value="12346" /></td>
+            <td><input type="text" class="inputField" value="5" /></td>
+            <td><input type="text" class="inputField" value="3" /></td>
+            <td><input type="text" class="inputField" value="8" /></td>
+            <td><input type="text" class="inputField" value="8.6" /></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="inputField" value="134567" /></td>
+            <td><input type="text" class="inputField" value="5" /></td>
+            <td><input type="text" class="inputField" value="2" /></td>
+            <td><input type="text" class="inputField" value="15" /></td>
+            <td><input type="text" class="inputField" value="9.0" /></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="inputField" value="123456" /></td>
+            <td><input type="text" class="inputField" value="5" /></td>
+            <td><input type="text" class="inputField" value="5" /></td>
+            <td><input type="text" class="inputField" value="14" /></td>
+            <td><input type="text" class="inputField" value="10" /></td>
+          </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+    <button onclick="addRow()" class="addRowButton">Add Row</button>
+  </div>
+  <button onclick="downloadData()" class="downloadButton">Download Excel</button>
+
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <script>
+    let sheetData = [];
+
+    function addRow() {
+      const table = document.querySelector('.table');
+      const newRow = document.createElement('tr');
+
+      const cell1 = document.createElement('td');
+      const cell2 = document.createElement('td');
+      const cell3 = document.createElement('td');
+      const cell4 = document.createElement('td');
+      const cell5 = document.createElement('td');
+
+      const input1 = document.createElement('input');
+      input1.type = 'text';
+      input1.className = 'inputField';
+
+      const input2 = document.createElement('input');
+      input2.type = 'text';
+      input2.className = 'inputField';
+
+      const input3 = document.createElement('input');
+      input3.type = 'text';
+      input3.className = 'inputField';
+
+      const input4 = document.createElement('input');
+      input4.type = 'text';
+      input4.className = 'inputField';
+
+      const input5 = document.createElement('input');
+      input5.type = 'text';
+      input5.className = 'inputField';
+
+      cell1.appendChild(input1);
+      cell2.appendChild(input2);
+      cell3.appendChild(input3);
+      cell4.appendChild(input4);
+      cell5.appendChild(input5);
+
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+      newRow.appendChild(cell3);
+      newRow.appendChild(cell4);
+      newRow.appendChild(cell5);
+
+      table.querySelector('tbody').appendChild(newRow);
+
+      // Update sheetData array
+      const newRowData = [input1.value, input2.value, input3.value,input4.value,input4.value];
+      sheetData.push(newRowData);
+    }
+
+    function downloadData() {
+      // Update sheetData array with the edited values
+      const tableRows = document.querySelectorAll('.table tbody tr');
+      sheetData = Array.from(tableRows).map(row => {
+        const inputFields = row.querySelectorAll('.inputField');
+        return Array.from(inputFields).map(field => field.value);
+      });
+
+      // Add the headings to sheetData
+      const headings = ['Serial Number', 'Voltage','Warranty', 'Quantity','Rating'];
+      sheetData.unshift(headings);
+
+      // Create a new workbook
+      const workbook = XLSX.utils.book_new();
+
+      // Create a new worksheet
+      const worksheet = XLSX.utils.aoa_to_sheet(sheetData);
+
+      // Add the worksheet to the workbook
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+      // Convert the workbook to Excel file format
+      const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+
+      // Convert the array buffer to a Blob
+      const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+
+      // Create a temporary download link
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Light.xlsx';
+
+      // Trigger the download by clicking the link
+      link.click();
+    }
+  </script>
+</body>
+</html>

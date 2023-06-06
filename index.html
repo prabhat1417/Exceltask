@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>HOME</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+        <div class="navbar">
+          <div class="navbar-header">
+            <p class="navbar-brand"><a href="/">EDIT EXCEL SHEET</a></p>
+          </div>
+            <ul class="nav">
+              <li id="home"><a href="/phone.html">SMARTPHONE</a></li>
+              <li id="home"><a href="/fan.html">FAN</a></li>
+              <li id="about"><a href="/light.html">LIGHT BULB</a></li>
+              <li id="contact"><a href="/refri.html">REFRIGERATOR</a></li>
+              <li id="contact"><a href="/tv.html">TELEVISION</a></li>
+            </ul>
+        </div>
+    <div class="container">
+    	<h2 class="text-center mt-4 mb-4">Upload your Excel sheet to edit</h2>
+    	<div class="card">
+    		<div class="card-header"><b>Select Excel File</b></div>
+    		<div class="card-body">
+    			
+                <input type="file" id="excel_file" />
+
+    		</div>
+    	</div>
+        <div id="excel_data" class="mt-5"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
